@@ -1,8 +1,7 @@
-//Global Variables
+//Global Variable
 const endPoint = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
-let word
 
-//User enters word in form, word is grabbed and passed into Get request...
+//User enters word in form
 document.addEventListener('DOMContentLoaded', () => {
 let userWordInput = document.querySelector('.form')
 userWordInput.addEventListener('submit', (event) => {
@@ -12,7 +11,7 @@ userWordInput.addEventListener('submit', (event) => {
 })
 })
 
-//User's word input is passed into this function to grab the corresponding definition from the end point
+//Get request for data
 function fetchFromEndPoint(word) {
     fetch(endPoint + word)
     .then(res => res.json())
@@ -27,7 +26,7 @@ paragraph.id = word
 paragraph.textContent = wordDefinition
 document.getElementById('definition').appendChild(paragraph)
 
-//Clear button refreshes 
+//Clear button 
 let clearButton = document.getElementById('clear')
 clearButton.addEventListener(('click'), () => {
 paragraph.remove()
@@ -42,17 +41,13 @@ deleteButton.addEventListener(('click'), () => {
 document.getElementById(word).remove()
 })
 
-// likeButton(word)
-
 //Like button
 let likeButton = document.createElement('button')
 likeButton.className = 'button'
 likeButton.id = (word)
 likeButton.textContent = 'Like'
 paragraph.appendChild(likeButton)
-// let likes = likes
 likeButton.addEventListener(('click'), () => {
-    // likeButton.textContent = 'Like ❤️'
     if(likeButton.textContent === 'Like') {
         likeButton.textContent = 'Like ❤️'
     } else if (likeButton.textContent === 'Like ❤️') {
