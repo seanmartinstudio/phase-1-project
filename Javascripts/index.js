@@ -22,18 +22,26 @@ function fetchFromEndPoint(word) {
 function renderDefinitionToDOM(data, word) {
 const wordDefinition = word + ':' + ' ' + data[0].meanings[0].definitions[0].definition
 let paragraph = document.createElement('p')
-paragraph.id = word.id
-paragraph.innerText = wordDefinition
+paragraph.id = word
+paragraph.textContent = wordDefinition
 document.getElementById('definition').appendChild(paragraph)
 
 //Clear button refreshes 
-let clearButton = document.getElementById('delete')
-console.log(deleteButton)
+let clearButton = document.getElementById('clear')
 clearButton.addEventListener(('click'), () => {
 paragraph.remove()
 })
-}
 
+
+//Delete button
+let deleteButton = document.createElement('button')
+deleteButton.innerText = 'Delete'
+deleteButton.id = 'delete'
+paragraph.appendChild(deleteButton)
+deleteButton.addEventListener(('click'), () => {
+document.getElementById(word).remove()
+})
+}
 
 
 
