@@ -1,5 +1,6 @@
 //Global Variables
 const endPoint = 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+let word
 
 //User enters word in form, word is grabbed and passed into Get request...
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,7 +33,6 @@ clearButton.addEventListener(('click'), () => {
 paragraph.remove()
 })
 
-
 //Delete button
 let deleteButton = document.createElement('button')
 deleteButton.innerText = 'Delete'
@@ -41,7 +41,23 @@ paragraph.appendChild(deleteButton)
 deleteButton.addEventListener(('click'), () => {
 document.getElementById(word).remove()
 })
+
+// likeButton(word)
+
+//Like button
+let likeButton = document.createElement('button')
+likeButton.className = 'button'
+likeButton.id = (word)
+likeButton.textContent = 'Like'
+paragraph.appendChild(likeButton)
+// let likes = likes
+likeButton.addEventListener(('click'), () => {
+    // likeButton.textContent = 'Like ❤️'
+    if(likeButton.textContent === 'Like') {
+        likeButton.textContent = 'Like ❤️'
+    } else if (likeButton.textContent === 'Like ❤️') {
+        likeButton.textContent= 'Like'
+    }
+})
 }
-
-
 
